@@ -1,0 +1,1 @@
+docker exec caddy-gateway caddy reload --config /etc/caddy/Caddyfile
