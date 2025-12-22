@@ -1,0 +1,35 @@
+# -------------------------
+# Environment variables
+# -------------------------
+.env
+.env.*
+
+# -------------------------
+# TLS / Certificates
+# -------------------------
+certs/
+*.pem
+*.key
+*.crt
+
+# -------------------------
+# Docker
+# -------------------------
+*.log
+docker-compose.override.yml
+
+# -------------------------
+# OS / Editor junk
+# -------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# -------------------------
+# Build / runtime artifacts
+# -------------------------
+caddy_data/
+caddy_config/

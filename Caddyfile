@@ -1,0 +1,22 @@
+{
+    # Cloudflare terminates public TLS, we provide certs manually
+    auto_https off
+}
+
+carlostoolkit.com {
+    tls {$TLS_CERT} {$TLS_KEY}
+    reverse_proxy 127.0.0.1:3090
+}
+
+*.carlostoolkit.com {
+    tls {$TLS_CERT} {$TLS_KEY}
+
+    @docs host docs.carlostoolkit.com
+    reverse_proxy @docs 127.0.0.1:3000
+
+    @chat host chat.carlostoolkit.com
+    reverse_proxy @chat 127.0.0.1:3080
+
+    @me host me.carlostoolkit.com
+    reverse_proxy @me 127.0.0.1:3090
+}
