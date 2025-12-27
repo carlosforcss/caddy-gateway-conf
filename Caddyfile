@@ -19,4 +19,7 @@ carlostoolkit.com {
 
     @me host me.carlostoolkit.com
     reverse_proxy @me 127.0.0.1:3090
+
+    @logs host logs.carlostoolkit.com
+    reverse_proxy @logs 127.0.0.1:3100
 }
