@@ -23,6 +23,9 @@ carlostoolkit.com {
     @logs host logs.carlostoolkit.com
     reverse_proxy @logs 127.0.0.1:3100
 
-    @mandarin mandarin mandarin.carlostookkit.com
+    @mandarin mandarin mandarin.carlostoolkit.com
     reverse_proxy @mandarin 127.0.0.1:3200
+
+    @mandarinapi mandarinapi mandarinapi.carlostoolkit.com
+    reverse_proxy @mandarinapi 127.0.0.1:3210
 }
