@@ -10,19 +10,61 @@ carlostoolkit.com {
 
 *.carlostoolkit.com {
     tls {$TLS_CERT} {$TLS_KEY}
+    encode zstd gzip
 
     @docs host docs.carlostoolkit.com
-    reverse_proxy @docs 127.0.0.1:3000
+    reverse_proxy @docs 127.0.0.1:3000 {
+        header_up X-Real-IP {remote_host}
+        transport http {
+            dial_timeout 5s
+            response_header_timeout 30s
+            keepalive 30s
+            keepalive_idle_conns 10
+        }
+    }
 
     @chat host chat.carlostoolkit.com
-    reverse_proxy @chat 127.0.0.1:3080
+    reverse_proxy @chat 127.0.0.1:3080 {
+        flush_interval -1
+        header_up X-Real-IP {remote_host}
+        transport http {
+            dial_timeout 5s
+            response_header_timeout 120s
+            keepalive 30s
+            keepalive_idle_conns 10
+        }
+    }
 
     @me host me.carlostoolkit.com
-    reverse_proxy @me 127.0.0.1:3090
+    reverse_proxy @me 127.0.0.1:3090 {
+        header_up X-Real-IP {remote_host}
+        transport http {
+            dial_timeout 5s
+            response_header_timeout 30s
+            keepalive 30s
+            keepalive_idle_conns 10
+        }
+    }
 
     @logs host logs.carlostoolkit.com
-    reverse_proxy @logs 127.0.0.1:3100
+    reverse_proxy @logs 127.0.0.1:3100 {
+        header_up X-Real-IP {remote_host}
+        transport http {
+            dial_timeout 5s
+            response_header_timeout 30s
+            keepalive 30s
+            keepalive_idle_conns 10
+        }
+    }
 
     @flashcards host flashcards.carlostoolkit.com
-    reverse_proxy @flashcards 127.0.0.1:3200
+    reverse_proxy @flashcards 127.0.0.1:3200 {
+        header_up X-Real-IP {remote_host}
+        transport http {
+            dial_timeout 5s
+            response_header_timeout 30s
+            keepalive 30s
+            keepalive_idle_conns 10
+        }
+    }
 }
