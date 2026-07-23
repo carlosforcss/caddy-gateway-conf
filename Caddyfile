@@ -91,7 +91,7 @@ carlostoolkit.com {
     }
 
     @media host media.carlostoolkit.com
-    reverse_proxy @media 127.0.0.1:9000 {
+    reverse_proxy @media 127.0.0.1:3300 {
         header_up X-Real-IP {remote_host}
         transport http {
             dial_timeout 5s
