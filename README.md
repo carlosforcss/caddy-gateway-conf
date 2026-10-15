@@ -42,12 +42,14 @@ docker compose logs --follow caddy
 
 ## Change the proxy configuration
 
-`Caddyfile` is mounted read-only into the container. Validate it before reloading:
+`Caddyfile` is mounted read-only into the container. The commands stream the
+working-tree file over stdin so a `git pull` that replaces the host file's inode
+does not leave Caddy validating and reloading the stale bind-mounted inode:
 
 ```sh
-docker compose exec caddy caddy validate \
-  --config /etc/caddy/Caddyfile \
-  --adapter caddyfile
+docker compose exec --no-TTY caddy caddy validate \
+  --config - \
+  --adapter caddyfile < Caddyfile
 ./reload.sh
 ```
 
