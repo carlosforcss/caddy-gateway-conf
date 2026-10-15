@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
 
-docker compose exec caddy caddy reload \
-  --config /etc/caddy/Caddyfile \
-  --adapter caddyfile
+docker compose exec --no-TTY caddy caddy reload \
+  --config - \
+  --adapter caddyfile < Caddyfile
