@@ -1,0 +1,15 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+certs/
+caddy_data/
+caddy_config/
+*.log
+.DS_Store
+README.md
+build.sh
+run.sh
+reload.sh
+compose.yaml

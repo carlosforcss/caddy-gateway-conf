@@ -1,1 +1,4 @@
-docker build -t caddy-gateway .
+#!/bin/sh
+set -eu
+
+docker compose build "$@"
