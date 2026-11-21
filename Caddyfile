@@ -68,12 +68,36 @@ carlostoolkit.com {
 		}
 	}
 
+	@notes host notes.carlostoolkit.com
+	reverse_proxy @notes 127.0.0.1:3010 {
+		header_up X-Real-IP {remote_host}
+		transport http {
+			dial_timeout 5s
+			response_header_timeout 30s
+			keepalive 30s
+			keepalive_idle_conns 10
+		}
+	}
+
 	@arido host arido.carlostoolkit.com
 	reverse_proxy @arido 127.0.0.1:3400 {
 		header_up X-Real-IP {remote_host}
 		transport http {
 			dial_timeout 5s
 			response_header_timeout 30s
+			keepalive 30s
+			keepalive_idle_conns 10
+		}
+	}
+
+
+	@vextor host vextor.carlostoolkit.com
+	reverse_proxy @vextor 127.0.0.1:3600 {
+		header_up X-Real-IP {remote_host}
+		transport http {
+			dial_timeout 5s
+			# Uploads of phone photos/PDFs pass through the app.
+			response_header_timeout 120s
 			keepalive 30s
 			keepalive_idle_conns 10
 		}
